@@ -2,7 +2,38 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { X } from "lucide-react";
 
+import mutakhassisSnapshot from "../assets/mutakhassis-platform-snapshot.png";
+
 const projects = [
+  {
+    title: "Al-Mutakhassis Platform",
+    category: "React | Firebase | Node.js",
+    description:
+      "Full-stack education platform for a Qudurat (aptitude) teacher: video library, timed tests, and payment flows—React front, Firebase + Node.js backend.",
+    details:
+      "A full-stack web platform built so a Qudurat (Saudi aptitude exam) teacher can host video lessons, publish timed quizzes, and accept payments. The frontend is React with Firebase (Auth + Firestore) for real-time data and session handling. A separate Node.js backend handles payment creation, webhooks, and access control: when a user pays (subscription or one-time), the backend validates the payment, then updates Firestore to grant access to the corresponding videos or test packs. Videos are stored and streamed via Firebase Storage; test questions and results live in Firestore with client-side timer and automatic submission. Role-based logic separates teacher (upload, manage content, view analytics) from students (browse, pay, watch, take tests, see scores).",
+    features: [
+      "React SPA with protected routes: public landing, student dashboard (my courses, tests, payments), teacher dashboard (content CRUD, analytics).",
+      "Firebase Auth for sign-up/sign-in; Firestore for users, courses, lessons, video metadata, test questions, and attempt results with real-time listeners.",
+      "Video library: courses → lessons → videos; metadata in Firestore, files in Firebase Storage; streaming and progress tracked per user.",
+      "Tests: questions stored in Firestore, timer and auto-submit on the client; score computed and saved with attempt history and optional leaderboard.",
+      "Node.js payment API: create checkout session, verify webhooks from the payment provider, then update Firestore (e.g. subscription flag or one-time unlock) so the React app reflects access immediately.",
+      "Access control: React checks Firestore (e.g. purchased/subscribed) before rendering paid content; backend is the source of truth after payment.",
+    ],
+    impact:
+      "Gave the teacher a single platform to monetize Qudurat prep, deliver videos and tests, and manage access via a clear payment and access-control flow.",
+    technologies: [
+      "React",
+      "Firebase Auth",
+      "Firestore",
+      "Firebase Storage",
+      "Node.js",
+      "Payment API",
+      "REST API",
+    ],
+    color: "from-teal-500 to-cyan-400",
+    image: mutakhassisSnapshot,
+  },
   {
     title: "POS High App",
     category: "Flutter | Restaurant POS",
